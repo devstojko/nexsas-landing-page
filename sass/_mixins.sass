@@ -1,0 +1,47 @@
+// Breakpoints
+
+@mixin breakpoint($point)
+  @if $point == desktop
+    @media (min-width: 75em)
+      @content
+
+  @else if $point == laptop
+    @media (min-width: 63em)
+      @content
+
+  @else if $point == tablet
+    @media (min-width: 48em)
+      @content
+
+  @else if $point == phablet
+    @media (min-width: 34em)
+      @content
+
+@mixin slider($selector, $slides)
+
+  #{$selector}
+    overflow: hidden
+
+  #{$selector}__slides
+    display: flex
+    margin: 25px 0
+    width: $slides * 100%
+    transition: all 0.3s ease-in-out
+
+  #{$selector}__slide
+    width: 100%
+    padding: 0 1px
+
+  #{$selector}__nav
+    cursor: pointer
+    width: 20px
+    height: 20px
+    margin: 5px
+
+
+  $length: $slides - 1
+  $jo: 100 / $slides
+  @for $i from 0 through $length
+
+    #{$selector}__nav--#{$i}:checked ~ #{$selector}__slides
+      transform: translate3d( - +$i * $jo + %, 0, 0 )

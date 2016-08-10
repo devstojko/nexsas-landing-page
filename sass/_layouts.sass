@@ -1,0 +1,243 @@
+body
+  font-family: 'Open Sans', sans-serif
+  &.is-active
+    overflow: hidden
+
+.h1
+  margin-bottom: 15px
+  font-size: 34px
+  color: white
+  @include breakpoint(tablet)
+    font-size: 48px
+  @include breakpoint(desktop)
+    font-size: 60px
+
+.h2
+  font-size: 26px
+  font-weight: 400
+  margin-bottom: 15px
+  @include breakpoint(tablet)
+    font-size: 36px
+
+.h3
+  font-size: 22px
+  margin-top: 25px
+  margin-bottom: 15px
+
+.text
+  font-size: 14px
+
+  &--primary
+    color: rgba(white, 0.8)
+
+  &--secondary
+    color: rgba($secondary, 0.8)
+
+.section
+  padding:
+    top: 50px
+    bottom: 50px
+  @include breakpoint(laptop)
+    padding:
+      top: 100px
+      bottom: 100px
+
+  &__subtitle
+    margin-bottom: 35px
+
+.hr
+  display: inline-block
+  height: 3px
+  width: 60px
+  margin-bottom: 25px
+  background-color: rgba($black, 0.4)
+
+.container
+  width: 100%
+  padding:
+    left: 1rem
+    right: 1rem
+  margin:
+    left: auto
+    right: auto
+  @include breakpoint(desktop)
+    width: 1170px
+
+// flex grid
+.row
+  display: flex
+  flex: 0 1 auto
+  flex-direction: row
+  flex-wrap: wrap
+  margin-left: -0.5rem
+  margin-right: -0.5rem
+
+
+%col-padding
+  padding-left: 0.5rem
+  padding-right: 0.5rem
+
+.col-xs-12
+  flex-basis: 100%
+  max-width: 100%
+  @extend %col-padding
+
+@include breakpoint(phablet)
+  .col-xsp-6
+    flex-basis: 50%
+    max-width: 50%
+    @extend %col-padding
+
+  .col-xsp-4
+    flex-basis: 33.33333%
+    max-width: 33.33333%
+    @extend %col-padding
+
+
+@include breakpoint(laptop)
+  .col-md-3
+    flex-basis: 25%
+    max-width: 25%
+    @extend %col-padding
+
+  .col-md-6
+    flex-basis: 50%
+    max-width: 50%
+    @extend %col-padding
+
+// header
+.header
+  position: fixed
+  z-index: 999
+  left: 0
+  top: 0
+  width: 100%
+  padding:
+    top: 5px
+    bottom: 5px
+  transition: all 600ms ease
+  border-bottom: 1px solid
+  border-bottom-color: transparent
+  @include breakpoint(laptop)
+    padding:
+      top: 20px
+      bottom: 20px
+
+  &.is-active
+    border-bottom-color: rgba($primary, 0.4)
+    background-color: $secondary
+    padding:
+      top: 5px
+      bottom: 5px
+
+
+// hero section
+.hero
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  background-image: url('../img/hero-bck.jpg')
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: cover
+
+  &__content
+    text-align: center
+
+  &__subtitle
+    color: white
+    font-size: 14px
+    padding-left: 5px
+    padding-right: 5px
+    margin-bottom: 50px
+    @include breakpoint(tablet)
+      font-size: 20px
+
+// main navigation
+.nav
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  background-color: black
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  opacity: 0
+  transform: translate3d(100%, 0, 0)
+  transition: transform 300ms ease, opacity 100ms ease
+  &.is-active
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+  @include breakpoint(laptop)
+    flex-direction: row
+    opacity: 1
+    width: auto
+    transform: translateX(0)
+    position: relative
+    background-color: transparent
+
+  &__link
+    color: white
+    font-size: 18px
+    font-weight: bold
+    text-transform: uppercase
+    margin-top: 15px
+    @include breakpoint(laptop)
+      margin-left: 15px
+      margin-top: 0
+
+// about section
+.services
+  text-align: center
+  background-color: $secondary
+
+.portfolio
+  text-align: center
+  background-color: $primary
+
+.about
+  text-align: center
+  background-color: $secondary
+
+  &__content
+    text-align: left
+
+.team
+  text-align: center
+  background-color: $primary
+
+.testimonials
+  text-align: center
+  background:
+    image: url('../img/testimonials-bg.jpg')
+    size: cover
+    repeat: no-repeat
+    attachment: fixed
+
+.contact
+  text-align: center
+  background-color: $primary
+
+  &__wrapper
+    width: 90%
+    max-width: 600px
+    margin:
+      left: auto
+      right: auto
+
+  &__form
+    margin:
+      top: 50px
+      bottom: 100px
+
+
+.footer
+  text-align: center
+  background-color: $secondary
+  padding:
+    top: 15px
+    bottom: 15px

@@ -1,0 +1,350 @@
+.preloader
+  position: fixed
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 1000
+  overflow: hidden
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: $secondary
+
+.preloader-item
+  display: block
+  width: 100px
+  height: 100px
+
+  &__circle
+    transform-origin: 50px 50px
+    fill: none
+    animation-iteration-count: infinite
+    animation-timing-function: linear
+    animation-name: rotate
+
+    &--outer
+      animation-duration: 5s
+      stroke: $primary
+
+    &--inner
+      animation-duration: 3s
+      stroke: $grey
+
+  &__rect
+    fill: $primary
+    animation-iteration-count: infinite
+    animation-timing-function: linear
+    animation-fill-mode: both
+    animation-duration: 1s
+    animation-name: rectTrans
+
+    &--first
+      animation-delay: 100ms
+    &--second
+      animation-delay: 200ms
+    &--third
+      animation-delay: 300ms
+    &--fourth
+      animation-delay: 400ms
+    &--fifth
+      animation-delay: 500ms
+
+
+@keyframes rectTrans
+  0
+    transform: translateY(5px)
+  50%
+    transform: translateY(-5px)
+  100%
+    transform: translateY(0)
+
+@keyframes rotate
+  100%
+    transform: rotate(360deg)
+
+// main navigation
+.navbar
+  position: relative
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  &__collapse
+    position: fixed
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    background-color: $secondary
+    opacity: 0
+    transform: translate3d(-100%, 0, 0)
+    transition: all ease 300ms
+    &.is-active
+      opacity: 1
+      transform: translate3d(0, 0, 0)
+
+    @include breakpoint(laptop)
+      opacity: 1
+      transform: translateX(0)
+      position: relative
+      width: auto
+      background-color: transparent
+
+
+.nav-list
+  text-align: center
+  &__item
+    display: block
+    margin-bottom: 15px
+    @include breakpoint(laptop)
+      display: inline-block
+      margin-bottom: 0
+
+.nav-link
+  font-size: 36px
+  text-transform: uppercase
+  color: white
+  padding: 15px
+  transition: color 300ms ease
+  @include breakpoint(phablet)
+    font-size: 16px
+  @include breakpoint(tablet)
+    font-size: 36px
+  @include breakpoint(laptop)
+    font-size: 12px
+
+  &:hover
+    color: $primary
+
+  &.is-active
+    color: $primary
+
+// burger
+.burger
+  display: inline-block
+  cursor: pointer
+  padding: 10px
+  background-color:$primary
+  transform: translate3d(0, 0, 0)
+  &.is-active
+    .burger__line
+      &--middle
+        transform: rotate(45deg)
+      &--top
+        transform: translateY(10px) rotate(-45deg)
+      &--bottom
+        transform: translateY(-10px) rotate(-45deg)
+  @include breakpoint(laptop)
+    display: none
+
+  &__line
+    position: relative
+    display: block
+    height: 5px
+    width: 30px
+    background-color: white
+    margin-bottom: 5px
+    transition: all 300ms ease
+    &--bottom
+      margin-bottom: 0
+
+
+// buttons
+.btn
+  display: inline-block
+  font-size: 18px
+  text-transform: uppercase
+  color: $secondary
+  padding: 10px 25px
+
+  &--outline
+    background-color: transparent
+    border: 2px solid rgba(white, 0.8)
+    transition: all 300ms ease
+    color: white
+    &:hover
+      background-color: rgba(white, 0.8)
+      color: $secondary
+
+    &.is-active
+      background-color: rgba(white, 0.8)
+
+  &--primary
+    background-color: $primary
+    transition: background-color 300ms ease
+    &:hover
+      background-color: darken($primary, 5%)
+// logo
+.logo
+  display: inline-block
+  font-weight: bold
+  font-size: 32px
+  color: white
+
+// thumnail
+.thumbnail
+  text-align: center
+  margin:
+    top: 25px
+    bottom: 25px
+  &:hover
+    .thumbnail__icon
+      background-color: lighten($secondary, 5%)
+
+  &__img
+    width: 120px
+    height: 120px
+    margin:
+      left: auto
+      right: auto
+
+  &__icon
+    display: inline-block
+    padding: 15px 25px
+    border-radius: 10%
+    color: $primary
+    background-color: darken($secondary, 5%)
+    transition: background-color 300ms ease
+
+  &__title
+    font-size: 18px
+    margin-top: 15px
+    margin-bottom: 15px
+    text-transform: uppercase
+
+
+// portfolio categories
+
+.filter-group
+  margin-bottom: 50px
+
+.filter-btn
+  border: 1px solid rgba(white, 0.6)
+  display: inline-block
+  padding: 5px 15px
+  margin-bottom: 15px
+  margin-right: 5px
+  transition: all 300ms ease
+  cursor: pointer
+  &:last-child
+    margin-right: 0
+
+  &.is-active
+    background-color: rgba(white, 0.6)
+
+  &:hover
+    background-color: rgba(white, 0.6)
+
+// portfolio item
+
+.portfolio-item
+  margin-bottom: 2rem
+  flex-basis: 100%
+  max-width: 100%
+  padding: 0 1rem
+  cursor: crosshair
+  @include breakpoint(phablet)
+    flex-basis: 50%
+    max-width: 50%
+  @include breakpoint(laptop)
+    flex-basis: 25%
+    max-width: 25%
+
+  &:hover
+    img
+      border:
+        top: 10px solid $secondary
+
+    .portfolio-item__content
+      background-color: $secondary
+
+    .portfolio-item__title,
+    .portfolio-item__category
+      color: $primary
+
+  img
+    border:
+      top: 10px solid transparent
+    transition: all 300ms ease
+
+  &__content
+    padding:
+      top: 15px
+      bottom: 15px
+    transition: all 300ms ease
+
+  &__title
+    color: $secondary
+    font-size: 22px
+    transition: all 300ms ease
+
+  &__category
+    transition: all 300ms ease
+
+  &.is-hidden
+    display: none
+
+  &.is-active
+    display: block
+
+.list
+  display: inline-block
+  margin-right: 50px
+  margin-top: 25px
+  color: red
+  li
+    color: rgba(white, 0.8)
+
+    &::before
+      content: '✓'
+      color: $primary
+      padding-right: 10px
+
+.list-inline
+  margin:
+    top: 15px
+    bottom: 15px
+  &__item
+    display: inline-block
+    margin-right: 25px
+    &:last-child
+      margin-right: 0
+
+.social-icon
+  color: white
+  transition: all 300ms ease
+  &:hover
+    color: $secondary
+
+// testimonials slider
+@include slider(".t-slider", 4)
+
+.testimonial
+
+  &__quote
+    color: rgba(white, 0.8)
+    @include breakpoint(laptop)
+      width: 50%
+      margin:
+        left: auto
+        right: auto
+
+  &__quote-author
+    color: rgba(white, 0.8)
+    margin-top: 25px
+    font-size: 14px
+
+.contact-icon
+  margin: 15px
+  color: rgba(white, 0.6)
+
+.form-control
+  width: 100%
+  padding: 5px 15px
+  margin-bottom: 25px
