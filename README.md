@@ -9,6 +9,6 @@ Technologies used in developing:
 - isotope.js
 - wow.js
 - fort awesome icons
-- pure css3 slider ( made by me )
+- pure css3 slider 
 
-Live Demo http://stojko.me/nexsas/
+
